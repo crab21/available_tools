@@ -1,0 +1,72 @@
+name: PUSH
+on:
+  push:
+    branches:
+      - main
+env:
+  PROTOC_VERSION: 3.21.5
+  DATE_NOW: $(date '+%Y%m%d%H%M')
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=today::$(date +'%Y%m%d%H%M')"
+        shell: bash
+
+      - name: Reponse body
+        id: response_info_1
+        run: |
+          ./tools
+          ls -all
+          result=$(ls changet|wc -l)
+          rs='false'
+          echo $result"................."
+          if [[ result -gt 0 ]];then
+            rs='true'
+          fi
+          echo "::set-output name=run_project_b_build::${rs}"
+
+      - name: Build project
+        if: ${{ steps.response_info_1.outputs.run_project_b_build == 'true' }}
+        run: |
+          date_now=${{ env.DATE_NOW }}
+          echo "版本tag: "${date_now}
+          cd proto-gen-pb
+          wget -v https://repo1.maven.org/maven2/com/google/protobuf/protoc/${{ env.PROTOC_VERSION }}/protoc-${{ env.PROTOC_VERSION }}-linux-x86_64.exe -O protoc
+          ls -all
+          docker login  --username imrcrab --password ${{ secrets.DOCKER_PWD }}
+          docker build --no-cache --build-arg GOLANG_VERSION=1.19 -t grpc-proto-pb:v${date_now} .
+          docker tag grpc-proto-pb:v${date_now} imrcrab/grpc-proto-pb:v${date_now}
+          docker push imrcrab/grpc-proto-pb:v${date_now}
+          rm -rf ~/.docker
+          cd ../
+      - name: Create Release
+        if: ${{ steps.response_info_1.outputs.run_project_b_build == 'true' }}
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
+        with:
+          tag_name: v0.0.${{ steps.date.outputs.today }}
+          release_name: Release v0.0.${{ steps.date.outputs.today }}
+          body_path: change
+          draft: false
+          prerelease: false
+      - name: git push change file
+        if: ${{ steps.response_info_1.outputs.run_project_b_build == 'true' }}
+        continue-on-error: true
+        run: |
+          git config --local user.name "crab"
+          git config --local user.email "imrcrab@163.com"
+          git add version.yml
+          git commit -m "modify: auto by action"
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/crab21/available_tools.git
+          rm -rf ~/.ssh

@@ -1,0 +1,16 @@
+value:
+  - url: ""
+    repo_name: protoc-gen-validate
+    owner: envoyproxy
+  - url: ""
+    repo_name: go-swagger
+    owner: go-swagger
+  - url: ""
+    repo_name: mock
+    owner: golang
+  - url: ""
+    repo_name: grpc-gateway
+    owner: grpc-ecosystem
+  - url: ""
+    repo_name: golangci-lint
+    owner: golangci
