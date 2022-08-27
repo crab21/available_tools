@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+  schedule:
+    - cron: "0 */1 * * *"
 env:
   PROTOC_VERSION: 3.21.5
   DATE_NOW: $(date '+%Y%m%d%H%M')
@@ -47,6 +49,8 @@ jobs:
           docker tag grpc-proto-pb:v${date_now} imrcrab/grpc-proto-pb:v${date_now}
           docker push imrcrab/grpc-proto-pb:v${date_now}
           rm -rf ~/.docker
+          echo -e "\n\n Docker repo: https://hub.docker.com/r/imrcrab/grpc-proto-pb/tags" >> change
+          echo -e "\n\n Docker usage: docker pull imrcrab/grpc-proto-pb" >> change
           cd ../
       - name: Create Release
         if: ${{ steps.response_info_1.outputs.run_project_b_build == 'true' }}
