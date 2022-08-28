@@ -7,7 +7,6 @@ on:
     - cron: "0 */1 * * *"
 env:
   PROTOC_VERSION: 3.21.5
-  DATE_NOW: $(date '+%Y%m%d%H%M')
 
 jobs:
   build:
@@ -22,7 +21,9 @@ jobs:
         id: date
         run: echo "::set-output name=today::$(date +'%Y%m%d%H%M')"
         shell: bash
-
+      - name: cd proto-gen-pb dir
+        run: |
+          cd proto-gen-pb
       - name: Reponse body
         id: response_info_1
         run: |
@@ -39,9 +40,8 @@ jobs:
       - name: Build project
         if: ${{ steps.response_info_1.outputs.run_project_b_build == 'true' }}
         run: |
-          date_now=${{ env.DATE_NOW }}
+          date_now=${{ steps.date.outputs.today }}
           echo "版本tag: "${date_now}
-          cd proto-gen-pb
           wget -v https://repo1.maven.org/maven2/com/google/protobuf/protoc/${{ env.PROTOC_VERSION }}/protoc-${{ env.PROTOC_VERSION }}-linux-x86_64.exe -O protoc
           ls -all
           docker login  --username imrcrab --password ${{ secrets.DOCKER_PWD }}
@@ -51,7 +51,6 @@ jobs:
           rm -rf ~/.docker
           echo -e "\n\n Docker repo: https://hub.docker.com/r/imrcrab/grpc-proto-pb/tags" >> change
           echo -e "\n\n Docker usage: docker pull imrcrab/grpc-proto-pb" >> change
-          cd ../
       - name: Create Release
         if: ${{ steps.response_info_1.outputs.run_project_b_build == 'true' }}
         id: create_release
