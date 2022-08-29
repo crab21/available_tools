@@ -7,6 +7,7 @@ on:
     - cron: "0 */1 * * *"
 env:
   PROTOC_VERSION: 3.21.5
+  GO_VERSION: 1.19
 
 jobs:
   build:
@@ -45,7 +46,7 @@ jobs:
           wget -v https://repo1.maven.org/maven2/com/google/protobuf/protoc/${{ env.PROTOC_VERSION }}/protoc-${{ env.PROTOC_VERSION }}-linux-x86_64.exe -O protoc
           ls -all
           docker login  --username imrcrab --password ${{ secrets.DOCKER_PWD }}
-          docker build --no-cache --build-arg GOLANG_VERSION=1.19 -t grpc-proto-pb:v${date_now} .
+          docker build --no-cache --build-arg GOLANG_VERSION=${{ env.GO_VERSION }} -t grpc-proto-pb:v${date_now} .
           docker tag grpc-proto-pb:v${date_now} imrcrab/grpc-proto-pb:v${date_now}
           docker push imrcrab/grpc-proto-pb:v${date_now}
           rm -rf ~/.docker
