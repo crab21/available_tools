@@ -1,34 +1,36 @@
 value:
-  - url: ""
-    before_version: ""
-    version: v0.6.7
-    repo_name: protoc-gen-validate
-    owner: envoyproxy
-  - url: ""
-    before_version: ""
-    version: v0.29.0
-    repo_name: go-swagger
-    owner: go-swagger
-  - url: ""
-    before_version: ""
-    version: v1.6.0
-    repo_name: mock
-    owner: golang
-  - url: ""
-    before_version: ""
-    version: v2.11.3
-    repo_name: grpc-gateway
-    owner: grpc-ecosystem
-  - url: ""
-    before_version: ""
-    version: v1.49.0
-    repo_name: golangci-lint
-    owner: golangci
-  - url: ""
-    # google.golang.org/grpc/cmd/protoc-gen-go-grpc
-    repo_name: grpc-go
-    owner: grpc
-  - url: ""
-    # google.golang.org/protobuf/cmd/protoc-gen-go
-    repo_name: protobuf-go
-    owner: protocolbuffers
+    - url: ""
+      before_version: ""
+      version: v0.6.7
+      repo_name: protoc-gen-validate
+      owner: envoyproxy
+    - url: ""
+      before_version: ""
+      version: v0.29.0
+      repo_name: go-swagger
+      owner: go-swagger
+    - url: ""
+      before_version: ""
+      version: v1.6.0
+      repo_name: mock
+      owner: golang
+    - url: ""
+      before_version: ""
+      version: v2.11.3
+      repo_name: grpc-gateway
+      owner: grpc-ecosystem
+    - url: ""
+      before_version: ""
+      version: v1.49.0
+      repo_name: golangci-lint
+      owner: golangci
+    - url: ""
+      before_version: ""
+      version: v1.49.0
+      repo_name: grpc-go
+      owner: grpc
+    - url: ""
+      before_version: ""
+      version: v1.28.1
+      repo_name: protobuf-go
+      owner: protocolbuffers
