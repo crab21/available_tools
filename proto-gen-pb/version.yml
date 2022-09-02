@@ -5,8 +5,8 @@ value:
       repo_name: protoc-gen-validate
       owner: envoyproxy
     - url: ""
-      before_version: v0.29.0
-      version: v0.30.0
+      before_version: v0.30.0
+      version: v0.30.2
       repo_name: go-swagger
       owner: go-swagger
     - url: ""
