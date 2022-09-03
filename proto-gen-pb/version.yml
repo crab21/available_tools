@@ -5,8 +5,8 @@ value:
     repo_name: protoc-gen-validate
     owner: envoyproxy
   - url: ""
-    before_version: ""
-    version: v0.29.0
+    before_version: v0.30.0
+    version: v0.30.2
     repo_name: go-swagger
     owner: go-swagger
   - url: ""
@@ -30,5 +30,6 @@ value:
     repo_name: grpc-go
     owner: grpc
   - url: ""
+    before_version: ""
     repo_name: protobuf-go
     owner: protocolbuffers
