@@ -7,7 +7,7 @@ value:
       change_log: ""
     - url: ""
       before_version: ""
-      version: v0.30.3
+      version: v0.30.2
       repo_name: go-swagger
       owner: go-swagger
       change_log: ""
