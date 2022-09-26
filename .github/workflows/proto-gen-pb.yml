@@ -52,7 +52,7 @@ jobs:
           rm -rf ~/.docker
           echo -e "\n\n # Docker:" >> change
           echo -e "\n\n       repo: https://hub.docker.com/r/imrcrab/grpc-proto-pb/tags" >> change
-          echo -e "\n\n      usage: docker pull imrcrab/grpc-proto-pb" >> change
+          echo -e "\n\n      usage: docker pull imrcrab/grpc-proto-pb:${date_now}" >> change
           cd ../
       - name: Create Release
         if: ${{ steps.response_info_1.outputs.run_project_b_build == 'true' }}
