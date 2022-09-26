@@ -53,6 +53,10 @@ jobs:
           echo -e "\n\n # Docker:" >> change
           echo -e "\n\n       repo: https://hub.docker.com/r/imrcrab/grpc-proto-pb/tags" >> change
           echo -e "\n\n      usage: docker pull imrcrab/grpc-proto-pb:${date_now}" >> change
+
+          echo -e "\n\n # Dependency Version:" >> change
+          echo -e "\n\n       Go Version:${{ env.GO_VERSION }}" >> change
+          echo -e "\n\n       ProtoBuffers Version: ${{ env.PROTOC_VERSION }}" >> change
           cd ../
       - name: Create Release
         if: ${{ steps.response_info_1.outputs.run_project_b_build == 'true' }}
