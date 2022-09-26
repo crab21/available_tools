@@ -25,7 +25,7 @@ protoc -I. -Igoogleapis -Iproto --java_out=${JAVA_OUT} $files
 <!-- grpc-gateway -->
 protoc -I. -Igoogleapis -Iproto --grpc-gateway_out=logtostderr=true:. $files
 
-<!-- grpc-gateway -->
+<!-- grpc-gateway -->docker
 <!-- It translates gRPC into RESTful JSON APIs. -->
 protoc -I. -Igoogleapis -Iproto 
     --plugin=protoc-gen-grpc-gateway=protoc-gen-grpc-gateway
