@@ -1,7 +1,7 @@
 value:
     - url: ""
-      before_version: v0.6.9-rc.0
-      version: v0.6.8
+      before_version: v0.6.8
+      version: v0.6.9-rc.0
       repo_name: protoc-gen-validate
       owner: envoyproxy
       change_log: ""
