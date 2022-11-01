@@ -18,8 +18,8 @@ value:
       owner: golang
       change_log: ""
     - url: ""
-      before_version: v2.11.3
-      version: v2.12.0
+      before_version: v2.12.0
+      version: v2.13.0
       repo_name: grpc-gateway
       owner: grpc-ecosystem
       change_log: ""
