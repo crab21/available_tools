@@ -1,43 +1,29 @@
 value:
     - url: ""
-      before_version: v0.7.0
-      version: v0.9.0
       repo_name: protoc-gen-validate
       owner: envoyproxy
       change_log: ""
     - url: ""
-      before_version: v0.30.2
-      version: v0.30.3
       repo_name: go-swagger
       owner: go-swagger
       change_log: ""
     - url: ""
-      before_version: ""
-      version: v1.6.0
       repo_name: mock
       owner: golang
       change_log: ""
     - url: ""
-      before_version: v2.13.0
-      version: v2.14.0
       repo_name: grpc-gateway
       owner: grpc-ecosystem
       change_log: ""
     - url: ""
-      before_version: v1.50.0
-      version: v1.50.1
       repo_name: golangci-lint
       owner: golangci
       change_log: ""
     - url: ""
-      before_version: v1.50.0
-      version: v1.50.1
       repo_name: grpc-go
       owner: grpc
       change_log: ""
     - url: ""
-      before_version: ""
-      version: v1.28.1
       repo_name: protobuf-go
       owner: protocolbuffers
       change_log: ""
