@@ -2,7 +2,7 @@ name: PUSH
 on:
   push:
     branches:
-      - main
+      - go19-v3.21.9
   schedule:
     - cron: "2 */1 * * *"
 env:
