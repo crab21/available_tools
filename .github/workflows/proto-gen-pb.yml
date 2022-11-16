@@ -1,10 +1,10 @@
-name: PUSH
+name: protoc-v3.21.6
 on:
   push:
     branches:
       - protoc-v3.21.6
   schedule:
-    - cron: "0 */1 * * *"
+    - cron: "2 */1 * * *"
 env:
   PROTOC_VERSION: 3.21.6
   GO_VERSION: 1.19
