@@ -4,9 +4,9 @@ on:
     branches:
       - main
   schedule:
-    - cron: "0 */1 * * *"
+    - cron: "2 */1 * * *"
 env:
-  PROTOC_VERSION: 3.21.5
+  PROTOC_VERSION: 3.21.9
   GO_VERSION: 1.19
 
 jobs:
