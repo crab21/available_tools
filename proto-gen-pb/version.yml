@@ -30,8 +30,8 @@ value:
       owner: golangci
       change_log: ""
     - url: ""
-      before_version: v1.52.1
-      version: 1.52.2
+      before_version: 1.52.2
+      version: v1.52.3
       repo_name: grpc-go
       owner: grpc
       change_log: ""
