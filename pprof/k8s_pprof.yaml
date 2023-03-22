@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crab-pprof-deployment
+  labels:
+    app: crab-pprof
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crab-pprof
+  template:
+    metadata:
+      labels:
+        app: crab-pprof
+    spec:
+      containers:
+      - name: crab-pprof
+        image: imrcrab/pprof:latest 

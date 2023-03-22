@@ -1,4 +1,4 @@
-ARG GOLANG_VERSION=golang:1.18-bullseye
+ARG GOLANG_VERSION=golang:1.20-bullseye
 FROM golang:${GOLANG_VERSION}-bullseye as build
 ARG PROTOC_VERSION=3.20.0
 ARG ENVOYPROXY=latest
@@ -22,7 +22,7 @@ RUN go install github.com/envoyproxy/protoc-gen-validate@${ENVOYPROXY} && \
     go install google.golang.org/protobuf/cmd/protoc-gen-go@${PROTOCOLBUFFERS} 
 
 
-ARG GOLANG_VERSION=1.18
+ARG GOLANG_VERSION=1.20
 FROM golang:${GOLANG_VERSION}-bullseye
 
 COPY --from=build /go/bin/ /go/bin/

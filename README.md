@@ -34,4 +34,36 @@ protoc -I. -Igoogleapis -Iproto
 ```
 
 
+## pprof
+
+### docker/containerd
+```
+docker run -d --name pprof imrcrab/pprof:latest 
+
+```
+
+### k8s
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crab-pprof-deployment
+  labels:
+    app: crab-pprof
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crab-pprof
+  template:
+    metadata:
+      labels:
+        app: crab-pprof
+    spec:
+      containers:
+      - name: crab-pprof
+        image: imrcrab/pprof:latest 
+```
+
 ## ...

@@ -1,13 +1,13 @@
 name: PUSH
 on:
   push:
-    branches:
-      - main
+    paths:
+      - 'proto-gen-pb/**'
   schedule:
     - cron: "0 */1 * * *"
 env:
   PROTOC_VERSION: 3.21.5
-  GO_VERSION: 1.19
+  GO_VERSION: 1.20
 
 jobs:
   build:

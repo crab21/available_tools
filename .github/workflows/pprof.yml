@@ -1,0 +1,28 @@
+name: PUSH
+on:
+  push:
+    paths:
+      - 'pporf/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=today::$(date +'%Y%m%d%H%M')"
+        shell: bash
+      - name: Build project
+        if: ${{ steps.response_info_1.outputs.run_project_b_build == 'true' }}
+        run: |
+          cd pprof/
+          docker build --no-cache -t pprof:latest .
+          docker login  --username imrcrab --password ${{ secrets.DOCKER_PWD }} 
+          docker tag pprof:latest imrcrab/pprof:latest
+          docker push imrcrab/pprof:latest
+          rm -rf ~/.docker
