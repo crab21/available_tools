@@ -30,8 +30,8 @@ value:
       owner: golangci
       change_log: ""
     - url: ""
-      before_version: v1.53.0
-      version: cmd/protoc-gen-go-grpc/v1.3.0
+      before_version: cmd/protoc-gen-go-grpc/v1.3.0
+      version: v1.54.0
       repo_name: grpc-go
       owner: grpc
       change_log: ""
