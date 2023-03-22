@@ -1,9 +1,8 @@
-name: PUSH
+name: go-pprof
 on:
   push:
     paths:
-      - 'pporf/**'
-
+      - "pprof/**"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,7 +17,6 @@ jobs:
         run: echo "::set-output name=today::$(date +'%Y%m%d%H%M')"
         shell: bash
       - name: Build project
-        if: ${{ steps.response_info_1.outputs.run_project_b_build == 'true' }}
         run: |
           cd pprof/
           docker build --no-cache -t pprof:latest .

@@ -10,8 +10,8 @@ RUN export CGO_ENABLED=0  \
     && export GOOS=linux \
     && export GO111MODULE=on \
     && apk add --no-cache upx ca-certificates tzdata git \
-    && apk add --no-cache graphviz=7.1.0-r1 \
-    && apk add --no-cache wrk=4.2.0-r0 \
+    && apk add --no-cache graphviz=7.0.5-r0 \
+    && apk add --no-cache wrk=4.1.0-r5 \
     && go install -v github.com/google/pprof@latest \
     && git clone https://github.com/brendangregg/FlameGraph.git \
     && export PATH=$PATH:$GOPATH/FlameGraph \
