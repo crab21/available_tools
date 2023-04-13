@@ -1,4 +1,4 @@
-ARG GOLANG_VERSION=golang:1.20-bullseye
+ARG GOLANG_VERSION=golang:1.20
 FROM golang:${GOLANG_VERSION}-bullseye as build
 ARG PROTOC_VERSION=3.20.0
 ARG ENVOYPROXY=latest
