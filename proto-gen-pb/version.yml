@@ -30,8 +30,8 @@ value:
       owner: golangci
       change_log: ""
     - url: ""
-      before_version: stats/opencensus/v1.0.0
-      version: gcp/observability/v1.0.0
+      before_version: gcp/observability/v1.0.0
+      version: v1.55.0
       repo_name: grpc-go
       owner: grpc
       change_log: ""
