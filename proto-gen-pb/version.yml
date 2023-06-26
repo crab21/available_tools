@@ -36,8 +36,8 @@ value:
       owner: grpc
       change_log: ""
     - url: ""
-      before_version: v1.29.1
-      version: v1.30.0
+      before_version: v1.30.0
+      version: v1.31.0
       repo_name: protobuf-go
       owner: protocolbuffers
       change_log: ""
