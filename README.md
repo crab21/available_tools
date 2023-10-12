@@ -48,22 +48,23 @@ docker run -d --name pprof imrcrab/pprof:latest
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: crab-pprof-deployment
+  name: aws-client-deployment
   labels:
-    app: crab-pprof
+    app: aws-client
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: crab-pprof
+      app: aws-client
   template:
     metadata:
       labels:
-        app: crab-pprof
+        app: aws-client
     spec:
       containers:
-      - name: crab-pprof
-        image: imrcrab/pprof:latest 
+      - name: aws-client
+        image: amazon/aws-cli
+        command: ["tail","-f","/dev/null"]
 ```
 
 ## ...

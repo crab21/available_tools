@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravel-client-deployment
+  labels:
+    app: laravel-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laravel-client
+  template:
+    metadata:
+      labels:
+        app: laravel-client
+    spec:
+      containers:
+      - name: laravel-client
+        image: docker.io/imrcrab/larvael-ln:v1684804925
+    
+
+
+------------------------
+
+
+cat <<EOF | kubectl create -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laravel-client-deployment
+  labels:
+    app: laravel-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: laravel-client
+  template:
+    metadata:
+      labels:
+        app: laravel-client
+    spec:
+      containers:
+      - name: laravel-client
+        image: docker.io/imrcrab/larvael-ln:v1684816393
+EOF
