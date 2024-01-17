@@ -34,7 +34,7 @@ jobs:
           date_now=${{ steps.date.outputs.today }}
           echo -e "\n\n # Docker:" >> change
           echo -e "\n\n       repo: https://hub.docker.com/r/imrcrab/grpc-proto-pb/tags" >> change
-          echo -e "\n\n      usage: docker pull imrcrab/grpc-proto-pb:${date_now}" >> change
+          echo -e "\n\n      usage: docker pull imrcrab/grpc-proto-pb:v${date_now}" >> change
 
           echo -e "\n\n # Dependency Version:" >> change
           echo -e "\n\n       Go Version:${{ env.GO_VERSION }}" >> change
