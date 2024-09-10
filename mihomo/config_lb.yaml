@@ -1,0 +1,747 @@
+# gh.api.99988866.xyz
+# github.rc1844.workers.dev
+# ghgo.feizhuqwq.workers.dev
+# git.yumenaka.net
+# github.com.cnpmjs.org
+# mirror.ghproxy.com/
+# ghproxy.com/
+# toolwa.com/github/
+
+experimental:
+  quic-go-disable-gso: false
+  quic-go-disable-ecn: false
+  dialer-ip4p-convert: true
+keep-alive-interval: 6000
+gso: true
+gso-max-size: 65536
+port: 7890
+socks-port: 7891
+mixed-port: 7892
+# authentication:
+#   - "gogo1:73580844-AFC1-4A1C-A7CE-A48B3F29BAAB"
+#   - "gogo2:C52CAA30-EBB1-4C69-8004-77ADAC34ACE0"
+allow-lan: true
+mode: Rule
+log-level: debug
+external-controller: 0.0.0.0:19090
+external-ui: /etc/mihomo/ui
+ipv6: true
+unified-delay: true
+tcp-concurrent: true
+geodata-mode: true
+geodata-loader: standard
+find-process-mode: always
+global-client-fingerprint: chrome
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+  force-domain:
+    - +.v2ex.com
+  skip-domain:
+    - Mijia Cloud
+geox-url:
+  geoip: "http://43.138.150.65:9000/res/geoip.dat"
+  geosite: "http://43.138.150.65:9000/res/geosite.dat"
+  mmdb: "http://43.138.150.65:9000/res/Country.mmdb"
+profile:
+  store-selected: true
+  store-fake-ip: true
+tun:
+  enable: true
+  stack: gvisor # Mixed/system/gvisor/lwip
+  dns-hijack:
+    - "any:53"
+    - "tcp://any:53"
+  auto-route: true
+  strict-route: true
+  auto-detect-interface: true
+dns:
+  enable: true
+  prefer-h3: false
+  listen: 0.0.0.0:53
+  ipv6: true
+  enhanced-mode: redir-host # fake-ip  redir-host
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    geosite:
+      - gfw
+      - github
+      - twitter
+      - youtube
+      - spotify
+      - facebook
+      - fastly
+      - google
+      - netflix
+      - telegram
+      - google-cn
+    ipcidr:
+      - 22.0.0.0/4
+    domain:
+      - "+.google.com"
+      - "+.facebook.com"
+      - "+.youtube.com"
+  fake-ip-range: 28.0.0.1/8
+  fake-ip-filter:
+    - "*"
+    - "+.lan"
+    - "+.local"
+    # 优先nameserver-policy，其次nameserver和fallback并发
+  fallback:
+    # - 'https://8.8.8.8/dns-query#dns'
+    - "https://cloudflare-dns.com/dns-query#dns"
+    - "https://cloudflare-dns.com/dns-query#dnns"
+    - "https://cloudflare-dns.com/dns-query#ddns"
+    - "https://dns.google/dns-query#dns"
+    - "https://dns.google/dns-query#dnns"
+    - "https://dns.google/dns-query#ddns"
+    # - 'https://cloudflare-dns.com/dns-query#dns'
+  nameserver:
+    - "https://cloudflare-dns.com/dns-query#dns"
+    - "https://cloudflare-dns.com/dns-query#dnns"
+    - "https://cloudflare-dns.com/dns-query#ddns"
+    - "https://dns.google/dns-query#dns"
+    - "https://dns.google/dns-query#dnns"
+    - "https://dns.google/dns-query#ddns"
+    # - "https://223.5.5.5/dns-query"
+    # - "https://doh.pub/dns-query"
+    # - 'https://8.8.8.8/dns-query#dns'
+  proxy-server-nameserver:
+    - "https://doh.pub/dns-query"
+    - "https://dns.alidns.com/dns-query"
+  nameserver-policy:
+    "+.163yun.com":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.163.com":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.netease.com":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.163jiasu.com":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.miyoushe.com":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.bilibili.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.tencent.com":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.qq.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.baidu.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.taobao.com":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.apiintl.biliapi.net":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.upos-hz-mirrorakam.akamaized.net":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.acg.tv":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.acgvideo.com":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.b23.tv":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.biliapi.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.biligame.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.bilivideo.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.hdslb.com":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.im9.com":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.smtcdns.net":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.360buy.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.alicdn.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.alimama.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.alipay.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.appzapp.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.baidupcs.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.ccgslb.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.duobao.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.jdpay.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.moke.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.qhimg.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.vpimg.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.xiami.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.xiaomi.*":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    "+.cn":
+      - "https://sm2.doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://doh.pub/dns-query"
+      - "https://223.5.5.5/dns-query"
+      - "https://dns.alidns.com/dns-query"
+    'rule-set:icloud,direct-cn,apple,direct-domain':
+       - '180.76.76.76'
+       - 'https://223.5.5.5/dns-query'
+       - 'https://doh.pub/dns-query'
+       - '223.5.5.5'
+       - '114.114.114.114'
+    "geosite:cn,private,tld-cn,apple-cn":
+       - '180.76.76.76'
+       - 'https://223.5.5.5/dns-query'
+       - 'https://doh.pub/dns-query'
+       - '223.5.5.5'
+       - '114.114.114.114'
+    "rule-set:proxy-domain":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+    "googleapis.cn,google.cn":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+      # - 'https://8.8.8.8/dns-query#dns'
+      # - 'https://cloudflare-dns.com/dns-query#dns'
+    "+.googleapis.cn,+.google.com,+.google.cn":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+      # - 'https://8.8.8.8/dns-query#dns'
+      # - 'https://cloudflare-dns.com/dns-query#dns'
+
+    "geosite:google-cn":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+      # - 'https://8.8.8.8/dns-query#dns'
+      # - 'https://cloudflare-dns.com/dns-query#dns'
+    "geosite:github":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+    "geosite:telegram":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+    "geosite:netflix":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+    "geosite:google":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+    "geosite:fastly":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+    "geosite:twitter":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+    "geosite:youtube":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+    "geosite:spotify":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+    "geosite:cloudflare":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+    "geosite:facebook":
+      - "https://cloudflare-dns.com/dns-query#dns"
+      - "https://cloudflare-dns.com/dns-query#dnns"
+      - "https://cloudflare-dns.com/dns-query#ddns"
+      - "https://dns.google/dns-query#dns"
+      - "https://dns.google/dns-query#dnns"
+      - "https://dns.google/dns-query#ddns"
+      # - 'https://8.8.8.8/dns-query#dns'
+      # - 'https://cloudflare-dns.com/dns-query#dns'
+
+rule-providers:
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "http://43.138.150.65:9000/res/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+
+  google:
+    type: http
+    behavior: domain
+    url: "http://43.138.150.65:9000/res/google.txt"
+    path: ./ruleset/google.yaml
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "http://43.138.150.65:9000/res/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+
+  reject-list:
+    type: http
+    behavior: domain
+    url: "http://43.138.150.65:9000/res/reject-list.txt"
+    path: ./ruleset/reject-list.yaml
+
+  tld-not-cn:
+    type: http
+    behavior: domain
+    url: "http://43.138.150.65:9000/res/tld-not-cn.txt"
+    path: ./ruleset/tld-not-cn.yaml
+
+  icloud:
+    type: http
+    behavior: domain
+    url: "http://43.138.150.65:9000/res/icloud.txt"
+    path: ./ruleset/icloud.yaml
+
+  direct-cn:
+    type: http
+    behavior: domain
+    url: "http://43.138.150.65:9000/res/direct.txt"
+    path: ./ruleset/direct-cn.yaml
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "http://43.138.150.65:9000/res/cncidr.txt"
+    path: ./ruleset/cncidr-cn.yaml
+
+  apple:
+    type: http
+    behavior: domain
+    url: "http://43.138.150.65:9000/res/apple.txt"
+    path: ./ruleset/apple-cn.yaml
+
+  proxy-domain:
+    type: http
+    behavior: domain
+    url: "http://43.138.150.65:9000/res/proxy-domain.yaml"
+    path: ./ruleset/proxy-domain.yaml
+
+  direct-domain:
+    type: http
+    behavior: domain
+    url: "http://43.138.150.65:9000/res/direct-domain.yaml"
+    path: ./ruleset/direct-domain.yaml
+
+usevless: &usevless
+  use:
+    - providervless
+usedns: &usedns
+  use:
+    - providerdns
+use: &use
+  type: select
+  use:
+    - provider2
+useall: &useall
+  type: select
+  use:
+    - providervless
+    - providerdns
+    - provider2
+######### 锚点 end #######
+p:
+  &p {
+    type: http,
+    health-check: { enable: false, url: https://www.gstatic.com/generate_204 },
+  }
+# url 里填写自己的订阅,名称不能重复
+proxy-providers:
+  providerdns:
+    <<: *p
+    url: "http://43.138.150.65:9000/res/config-dns.yaml"
+    path: ./proxy_providers/providerdns.yaml
+
+  providervless:
+    <<: *p
+    url: "http://43.138.150.65:9000/res/config-vless.yaml"
+    path: ./proxy_providers/providervless.yaml
+
+  provider2:
+    <<: *p
+    url: "http://fbapiv1.fbsublink.com/flydsubal/ww4b6ohatyxf0j81?clash=1&extend=1"
+    path: ./proxy_providers/56a0f9bc-80b2-485a-829a-742fe0a0252f.yaml
+
+proxy-groups:
+  - name: 🔰 fly
+    type: select
+    <<: *useall
+    lazy: true
+    disable-udp: true
+    exclude-filter: "(?i)gpt"
+    filter: "(?i)美|us|香|hongkong|hong kong|sing|japan|jp|台|日本|jp|japan"
+  - name: dns
+    lazy: true
+    disable-udp: true
+    type: load-balance #load-balance #select
+    strategy: consistent-hashing #consistent-hashing # or round-robin
+    <<: *usedns
+  - name: dnns
+    lazy: true
+    disable-udp: true
+    type: load-balance #load-balance #select
+    strategy: consistent-hashing #consistent-hashing # or round-robin
+    <<: *usedns
+  - name: ddns
+    lazy: true
+    disable-udp: true
+    type: load-balance #load-balance #select
+    strategy: consistent-hashing #consistent-hashing # or round-robin
+    <<: *usedns
+  - name: 🔰 vvless
+    lazy: true
+    disable-udp: true
+    type: load-balance #load-balance #select
+    strategy: consistent-hashing #consistent-hashing # or round-robin
+    <<: *usevless
+  - name: apple
+    type: select
+    lazy: true
+    proxies:
+      - 🎯 全球直连
+      - 🔰 节点选择
+  - name: 🔰 节点选择
+    lazy: true
+    type: select
+    disable-udp: true
+    proxies:
+      - 🔰 vvless
+      - 其它地区
+      - 全部节点
+      - 🔰 fly
+
+  - name: 🌏 国内媒体
+    type: select
+    lazy: true
+    proxies:
+      - 🎯 全球直连
+      - 🔰 节点选择
+  - name: 🎯 全球直连
+    type: select
+    lazy: true
+    proxies:
+      - DIRECT
+  - name: 🛑 全球拦截
+    type: select
+    lazy: true
+    proxies:
+      - PASS
+      - REJECT
+      - DIRECT
+  - name: 🐟 漏网之鱼
+    type: select
+    disable-udp: true
+    lazy: true
+    proxies:
+      - 🔰 节点选择
+      - 🎯 全球直连
+  - name: 其它地区
+    type: select
+    lazy: true
+    disable-udp: true
+    use:
+      - provider2
+      - providerdns
+      - providervless
+
+  - name: 全部节点
+    lazy: true
+    disable-udp: true
+    type: select
+    use:
+      - provider2
+      - providerdns
+      - providervless
+
+rules:
+  - GEOSITE,category-ads-all,🛑 全球拦截
+  - RULE-SET,reject-list,🛑 全球拦截
+  - PROCESS-NAME-REGEX,(?i)^.*Slack.*,🔰 节点选择
+  - PROCESS-NAME-REGEX,(?i)^.*WeChat.*,🌏 国内媒体
+  - PROCESS-NAME-REGEX,(?i)^.*Music.*,🌏 国内媒体
+  - PROCESS-NAME-REGEX,(?i)^.*Telegram.*,🔰 节点选择
+  - PROCESS-NAME-REGEX,(?i)^.*ChatGPT.*,🔰 节点选择
+  - RULE-SET,proxy-domain,🔰 节点选择
+  - RULE-SET,direct-domain,🌏 国内媒体
+  - IP-CIDR,154.21.95.15/32,DIRECT,no-resolve
+  - RULE-SET,icloud,🌏 国内媒体
+  - GEOSITE,google-cn,🔰 节点选择
+  - AND,((GEOSITE,google-cn),(NETWORK,UDP)),🔰 节点选择
+  - RULE-SET,tld-not-cn,🔰 节点选择
+  - AND,((RULE-SET,tld-not-cn),(NETWORK,UDP)),🔰 节点选择
+  - RULE-SET,apple,🌏 国内媒体
+  - DOMAIN-KEYWORD,apple.com,apple
+  - PROCESS-PATH,/System/Applications/Music.app/Contents/MacOS/Music,apple
+  - PROCESS-PATH,/Applications/OpenVPN Connect/OpenVPN Connect.app/Contents/MacOS/OpenVPN Connect,🔰 节点选择
+  - PROCESS-NAME,com.apple.android.music,apple
+  - PROCESS-PATH,/Applications/WeChat.app/Contents/MacOS/WeChat,DIRECT
+  - PROCESS-PATH,/Applications/WeChat.app/Contents/MacOS/WeChatAppEx.app,DIRECT
+  - IP-CIDR,154.21.95.15/32,DIRECT,no-resolve
+  - DOMAIN-KEYWORD,opendns.com,DIRECT
+  - DOMAIN-KEYWORD,time.asia.apple.com,DIRECT
+  - DOMAIN-KEYWORD,v2club.me,DIRECT
+  - DOMAIN-KEYWORD,fbsublink.com,DIRECT
+  - DOMAIN,api.v2club1.xyz,DIRECT
+  - DOMAIN-KEYWORD,v2club1.xyz,DIRECT
+  - DOMAIN,api.v1.mk,DIRECT
+  - DOMAIN-KEYWORD,v27qae.com,DIRECT
+
+
+
+  - DOMAIN-KEYWORD,googleapis.cn,🔰 节点选择
+  - DOMAIN-KEYWORD,googleapis.com,🔰 节点选择
+  - DOMAIN-KEYWORD,google.cn,🔰 节点选择
+  - DOMAIN-KEYWORD,google,🔰 节点选择
+  - AND,((DOMAIN-KEYWORD,google),(NETWORK,UDP)),🔰 节点选择
+
+  - GEOSITE,google-cn,🔰 节点选择
+  - AND,((GEOSITE,google-cn),(NETWORK,UDP)),🔰 节点选择
+  - GEOIP,cn,🌏 国内媒体,no-resolve
+  - GEOSITE,cn,🌏 国内媒体
+  - GEOSITE,tld-cn,🌏 国内媒体
+  - GEOSITE,apple-cn,🌏 国内媒体
+  - RULE-SET,lancidr,🌏 国内媒体,no-resolve
+  - RULE-SET,cncidr,🌏 国内媒体,no-resolve
+  - IP-CIDR,1.1.1.1/32,🔰 节点选择,no-resolve
+  - AND,((IP-CIDR,1.1.1.1/32),(NETWORK,UDP)),🔰 节点选择
+  - IP-CIDR,8.8.8.8/32,🔰 节点选择,no-resolve
+  - AND,((IP-CIDR,8.8.8.8/32),(NETWORK,UDP)),🔰 节点选择
+  - IP-CIDR,223.5.5.5/32,DIRECT,no-resolve
+  - IP-CIDR,223.6.6.6/32,DIRECT,no-resolve
+
+  - IP-CIDR,120.53.53.53/32,DIRECT,no-resolve
+  - IP-CIDR,180.76.76.76/32,DIRECT,no-resolve
+  - IP-CIDR,119.29.29.29/32,DIRECT,no-resolve
+  - IP-CIDR,114.114.114.114/32,DIRECT,no-resolve
+  - IP-CIDR,1.2.4.8/32,DIRECT,no-resolve
+  # 订阅地址/域名
+  #- AND,((NOT,((GEOIP,cn))),(NETWORK,udp),(NOT,((DST-PORT,443/80/853/53)))),REJECT
+
+  - AND,((GEOIP,cloudflare),(NETWORK,UDP)),🔰 节点选择
+  - AND,((GEOIP,cloudfront),(NETWORK,UDP)),🔰 节点选择
+  - AND,((GEOIP,facebook),(NETWORK,UDP)),🔰 节点选择
+  - AND,((GEOIP,fastly),(NETWORK,UDP)),🔰 节点选择
+  - AND,((GEOIP,google),(NETWORK,UDP)),🔰 节点选择
+  - AND,((GEOIP,netflix),(NETWORK,UDP)),🔰 节点选择
+  - AND,((GEOIP,telegram),(NETWORK,UDP)),🔰 节点选择
+  - AND,((GEOIP,twitter),(NETWORK,UDP)),🔰 节点选择
+  - AND,((DST-PORT,3478),(NETWORK,UDP)),🔰 节点选择
+  - AND,((DST-PORT,19302),(NETWORK,UDP)),🔰 节点选择
+  - DST-PORT,3478,🔰 节点选择
+  - DST-PORT,19302,🔰 节点选择
+  - GEOIP,cloudflare,🔰 节点选择
+  - GEOIP,cloudfront,🔰 节点选择
+  - GEOIP,facebook,🔰 节点选择
+  - GEOIP,fastly,🔰 节点选择
+  - GEOIP,google,🔰 节点选择
+  - GEOIP,netflix,🔰 节点选择
+  - GEOIP,telegram,🔰 节点选择
+  - GEOIP,twitter,🔰 节点选择
+  - GEOSITE,gfw,🔰 节点选择
+
+
+  - DOMAIN-SUFFIX,local,DIRECT
+  - DOMAIN,localhost,DIRECT
+  - DOMAIN-SUFFIX,local,DIRECT
+  - NETWORK,udp,REJECT
+  - MATCH,🐟 漏网之鱼
+  - MATCH,🐟 漏网之鱼
