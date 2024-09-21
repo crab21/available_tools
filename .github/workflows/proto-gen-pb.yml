@@ -11,8 +11,8 @@ on:
         description: 'add white ip'     
         required: false
 env:
-  PROTOC_VERSION: 3.21.5
-  GO_VERSION: 1.21.6
+  PROTOC_VERSION: 3.25.5
+  GO_VERSION: 1.23.0
 
 jobs:
   build:

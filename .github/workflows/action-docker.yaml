@@ -1,0 +1,42 @@
+name: test-docker-action
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      ipwhite:
+        description: 'add white ip'     
+        required: false
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Hello world action step
+        id: hello
+        uses: crab21/action-docker-test@v17
+        with:
+          type: 'mrkdwn'
+          title: 'Hello world ${{ github.actor}}'
+          content: 'This is my first action ${{ github.ref_name}}'
+          alarm-level: 5
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: ls
+        run: |
+          ls -all
+      - name: Post to a Slack channel
+        id: slack
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          # Slack channel id, channel name, or user id to post message.
+          # See also: https://api.slack.com/methods/chat.postMessage#channels
+          channel-id: '${{ secrets.SLACK_CHANNEL }}'
+          # For posting a rich message using Block Kit
+          payload-file-path: 'payload.json'
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
