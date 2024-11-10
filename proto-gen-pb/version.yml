@@ -24,8 +24,8 @@ value:
       owner: grpc-ecosystem
       change_log: ""
     - url: ""
-      before_version: v1.59.1
-      version: v1.61.0
+      before_version: v1.61.0
+      version: v1.62.0
       repo_name: golangci-lint
       owner: golangci
       change_log: ""
