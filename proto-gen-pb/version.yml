@@ -6,8 +6,8 @@ value:
       owner: envoyproxy
       change_log: ""
     - url: ""
-      before_version: v0.30.5
-      version: v0.31.0
+      before_version: v0.31.0
+      version: v0.32.3
       repo_name: go-swagger
       owner: go-swagger
       change_log: ""
