@@ -17,10 +17,10 @@
           id: get-time
           shell: nu {0}
           run: |
-            echo "time=1" | save --append $env.GITHUB_OUTPUT
-            echo "timeYY=2" | save --append $env.GITHUB_OUTPUT
-            echo "timeMM=3" | save --append $env.GITHUB_OUTPUT
-            echo "timeDD=4" | save --append $env.GITHUB_OUTPUT
+             "time=1" | save --append $env.GITHUB_OUTPUT
+             "timeYY=2" | save --append $env.GITHUB_OUTPUT
+             "timeMM=3" | save --append $env.GITHUB_OUTPUT
+             "timeDD=4" | save --append $env.GITHUB_OUTPUT
         - name: get time 1
           shell: nu {0}
           run: |
