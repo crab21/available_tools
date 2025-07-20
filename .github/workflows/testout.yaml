@@ -24,20 +24,20 @@
         - name: get time 1
           shell: nu {0}
           run: |
-            let a = echo ${{ steps.get-time.output.time }}
+            let a = echo ${{ steps.get-time.outputs.time }}
             print $a
         - name: get time 1
           shell: nu {0}
           run: |
-            let a = echo ${{ steps.get-time.output.timeYY }}
+            let a = echo ${{ steps.get-time.outputs.timeYY }}
             print $a
         - name: get time 1
           shell: nu {0}
           run: |
-            let a = echo ${{ steps.get-time.output.timeMM }}
+            let a = echo ${{ steps.get-time.outputs.timeMM }}
             print $a
         - name: get time 1
           shell: nu {0}
           run: |
-            let a = echo ${{ steps.get-time.output.timeDD }}
+            let a = echo ${{ steps.get-time.outputs.timeDD }}
             print $a
