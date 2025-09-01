@@ -1,0 +1,44 @@
+---
+  name: "test opt"
+  
+  on:
+    workflow_dispatch:
+  jobs:
+    publish-chart:
+      name: "publish charts"
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+        - uses: hustcer/setup-nu@v3
+          with:
+            version: "*"
+        - name: get time
+          id: get-time
+          shell: nu {0}
+          run: |
+             $"time=1\n" | save --append $env.GITHUB_OUTPUT
+             $"timeYY=2\n" | save --append $env.GITHUB_OUTPUT
+             $"timeMM=3\n" | save --append $env.GITHUB_OUTPUT
+             $"timeDD=4\n" | save --append $env.GITHUB_OUTPUT
+             print (open $env.GITHUB_OUTPUT)
+        - name: get time 1
+          shell: nu {0}
+          run: |
+            let a = echo ${{ steps.get-time.outputs.time }}
+            print $a
+        - name: get time 1
+          shell: nu {0}
+          run: |
+            let a = echo ${{ steps.get-time.outputs.timeYY }}
+            print $a
+        - name: get time 1
+          shell: nu {0}
+          run: |
+            let a = echo ${{ steps.get-time.outputs.timeMM }}
+            print $a
+        - name: get time 1
+          shell: nu {0}
+          run: |
+            let a = echo ${{ steps.get-time.outputs.timeDD }}
+            print $a
